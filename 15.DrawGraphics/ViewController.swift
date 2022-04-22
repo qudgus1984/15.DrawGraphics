@@ -78,9 +78,39 @@ class ViewController: UIViewController {
         imgView.image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
     }
+    
     @IBAction func btnDrawArc(_ sender: UIButton) {
+        UIGraphicsBeginImageContext(imgView.frame.size)
+        let context = UIGraphicsGetCurrentContext()!
+        
+        // Draw Arc
+        context.setLineWidth(5.0)
+        context.setStrokeColor(UIColor.red.cgColor)
+        
+        context.move(to: CGPoint(x: 100, y: 50))
+        context.addArc(tangent1End: CGPoint(x: 250, y: 50), tangent2End: CGPoint(x: 250, y: 200), radius: CGFloat(50))
+        context.addLine(to: CGPoint(x: 250, y: 200))
+        // 현재 위치에서 두 개의 접점 사이에 내접하는 반지름이 50인 호를 그리겠다는 의미
+        context.move(to: CGPoint(x: 100, y: 200))
+        context.addArc(tangent1End: CGPoint(x: 270, y: 250), tangent2End: CGPoint(x: 100, y: 400), radius: CGFloat(20))
+        context.addLine(to: CGPoint(x: 100, y: 400))
+        
+        context.strokePath()
+        
+        imgView.image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
     }
+    
     @IBAction func btnDrawFill(_ sender: UIButton) {
+        UIGraphicsBeginImageContext(imgView.frame.size)
+        let context = UIGraphicsGetCurrentContext()!
+        
+        // Draw Rectangle
+        context.setLineWidth(2.0)
+        context.setStrokeColor(UIColor.red.cgColor)
+        
+        context.addRect(CGRect(x: 70, y: 100, width: 200, height: 200)) // XY 좌표에서 시작하고 폭이 200픽셀, 높이가 200픽셀인 사각형을 그림
+        context.strokePath()
     }
     
 }
