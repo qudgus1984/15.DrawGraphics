@@ -85,7 +85,7 @@ class ViewController: UIViewController {
         
         // Draw Arc
         context.setLineWidth(5.0)
-        context.setStrokeColor(UIColor.red.cgColor)
+        context.setStrokeColor(UIColor.green.cgColor)
         
         context.move(to: CGPoint(x: 100, y: 50))
         context.addArc(tangent1End: CGPoint(x: 250, y: 50), tangent2End: CGPoint(x: 250, y: 200), radius: CGFloat(50))
